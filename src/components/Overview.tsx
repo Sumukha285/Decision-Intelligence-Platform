@@ -4,7 +4,7 @@ import * as Icons from 'lucide-react';
 
 interface OverviewProps {
   domains: DomainData[];
-  onSelectDomain: (id: DomainId) => void;
+  onSelectDomain: (id: DomainId | 'tutorial') => void;
   cityHealthIndex: number;
 }
 
@@ -239,14 +239,23 @@ export default function Overview({ domains, onSelectDomain, cityHealthIndex }: O
 
       {/* Interactive Platform Tutorial & Quick Start Walkthrough */}
       <div id="platform-tutorial-guide" className="bg-white border border-slate-200 rounded-2xl p-6 md:p-8 space-y-6 shadow-sm">
-        <div className="border-b border-slate-100 pb-4">
-          <div className="flex items-center gap-2 text-blue-600 mb-1">
-            <Icons.BookOpen className="w-5 h-5" />
-            <h3 className="font-sans font-bold text-lg text-slate-900 tracking-tight">Platform Guide & Decision Walkthrough</h3>
+        <div className="border-b border-slate-100 pb-4 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2 text-blue-600">
+              <Icons.BookOpen className="w-5 h-5" />
+              <h3 className="font-sans font-bold text-lg text-slate-900 tracking-tight">Platform Guide & Decision Walkthrough</h3>
+            </div>
+            <p className="font-sans text-xs text-slate-500">
+              Welcome to the Decision Intelligence Platform. Follow this step-by-step tutorial to run predictions, audit computer vision streams, and draft policies.
+            </p>
           </div>
-          <p className="font-sans text-xs text-slate-500">
-            Welcome to the Decision Intelligence Platform. Follow this step-by-step tutorial to run predictions, audit computer vision streams, and draft policies.
-          </p>
+          <button
+            onClick={() => onSelectDomain('tutorial')}
+            className="flex items-center gap-1.5 px-4 py-2 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white font-sans text-xs font-bold rounded-xl shadow-md shadow-amber-500/10 transition-all shrink-0 uppercase tracking-wider"
+          >
+            <Icons.GraduationCap className="w-4 h-4" />
+            <span>Launch Academy Tour</span>
+          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

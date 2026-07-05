@@ -4,8 +4,8 @@ import * as Icons from 'lucide-react';
 
 interface SidebarProps {
   domains: DomainData[];
-  selectedDomainId: DomainId | 'overview';
-  onSelectDomain: (id: DomainId | 'overview') => void;
+  selectedDomainId: DomainId | 'overview' | 'tutorial';
+  onSelectDomain: (id: DomainId | 'overview' | 'tutorial') => void;
   cityHealthIndex: number;
 }
 
@@ -71,7 +71,7 @@ export default function Sidebar({
       {/* Navigation Content */}
       <div className="flex-1 overflow-y-auto py-4 px-3 space-y-6 scrollbar-thin scrollbar-thumb-slate-800">
         {/* Core Control */}
-        <div>
+        <div className="space-y-1.5">
           <button
             id="nav-overview"
             onClick={() => onSelectDomain('overview')}
@@ -83,6 +83,22 @@ export default function Sidebar({
           >
             <Icons.LayoutDashboard className="w-5 h-5" />
             <span>Executive Command Center</span>
+          </button>
+
+          <button
+            id="nav-tutorial"
+            onClick={() => onSelectDomain('tutorial')}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-sans text-sm font-medium transition-all ${
+              selectedDomainId === 'tutorial'
+                ? 'bg-blue-600 text-white shadow-lg shadow-blue-600/10'
+                : 'text-slate-400 hover:text-white hover:bg-slate-800/60'
+            }`}
+          >
+            <Icons.GraduationCap className="w-5 h-5 text-amber-400" />
+            <span className="flex-1 text-left">Platform Tutorial</span>
+            <span className="bg-amber-500/20 text-amber-300 font-mono text-[9px] font-bold px-1.5 py-0.5 rounded border border-amber-500/30 uppercase animate-pulse">
+              Tour
+            </span>
           </button>
         </div>
 

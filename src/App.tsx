@@ -7,10 +7,11 @@ import PredictiveAnalytics from './components/PredictiveAnalytics';
 import VisionLab from './components/VisionLab';
 import ConversationalAgent from './components/ConversationalAgent';
 import WorkflowAutomation from './components/WorkflowAutomation';
+import TutorialGuide from './components/TutorialGuide';
 import * as Icons from 'lucide-react';
 
 export default function App() {
-  const [selectedDomainId, setSelectedDomainId] = useState<DomainId | 'overview'>('overview');
+  const [selectedDomainId, setSelectedDomainId] = useState<DomainId | 'overview' | 'tutorial'>('overview');
   const [geminiActive, setGeminiActive] = useState<boolean | null>(null);
 
   // Fetch Gemini connection status from the backend
@@ -115,6 +116,16 @@ export default function App() {
             onSelectDomain={(id) => setSelectedDomainId(id)}
             cityHealthIndex={cityHealthIndex}
           />
+        ) : selectedDomainId === 'tutorial' ? (
+          /* INTERACTIVE TUTORIAL ACADEMY */
+          <div className="flex-1 overflow-y-auto p-8 scrollbar-thin">
+            <TutorialGuide
+              onLaunchDomain={(domainId) => {
+                setSelectedDomainId(domainId);
+                setActiveTab('forecast');
+              }}
+            />
+          </div>
         ) : (
           /* WORKSPACE PLATFORM FOR SELECTED ADMIN DOMAIN */
           selectedDomain && (

@@ -1,0 +1,6 @@
+{
+  "name": "Decision Intelligence Platform",
+  "description": "An AI-powered platform leveraging data, predictive models, and intelligent automation to solve urban mobility, public safety, healthcare, education, environmental, and community challenges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
